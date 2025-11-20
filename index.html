@@ -3,15 +3,697 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deeksha Gundu - Data Analyst Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Deeksha Gundu - Power Platform Developer Portfolio</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-color: #2c3e50; /* Dark Blue */
+            --secondary-color: #3498db; /* Bright Blue */
+            --accent-color: #e74c3c; /* Red for subtle accents */
+            --background-color: #f4f7f6; /* Very Light Gray/Blue */
+            --card-bg-color: #ffffff;
+            --text-color: #34495e; /* Dark Gray */
+            --text-light: #7f8c8d;
+            --font-family: 'Poppins', sans-serif;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: var(--card-bg-color);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover, 
+        nav ul li a.active {
+            color: var(--secondary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 5px;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Background image with dark overlay for readability */
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Creates a nice parallax effect */
+            color: white;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Abstract shapes for background interest */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin: 0 0 1rem 0;
+            line-height: 1.2;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            color: #bdc3c7;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+            border-color: white;
+        }
+
+        /* Common Section Styles */
+        .content-section {
+            padding: 6rem 10%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            display: block;
+        }
+        
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--secondary-color);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-text h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .about-text ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-text ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .about-text ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg-color);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-bottom: 4px solid transparent;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .skill-category i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-category h3 {
+            margin: 0.5rem 0 1rem 0;
+            color: var(--primary-color);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: #eef2f7;
+            color: var(--text-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #e0e0e0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background: var(--card-bg-color);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border: 4px solid #fff;
+            border-radius: 50%;
+            top: 25px;
+            z-index: 1;
+            box-shadow: 0 0 0 2px var(--secondary-color);
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        .timeline-item h3 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-align: left; /* Force text alignment left inside cards */
+        }
+        
+        .timeline-content ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .timeline-content ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-header {
+            background-color: var(--primary-color);
+            padding: 1.5rem;
+            color: white;
+            position: relative;
+        }
+        
+        .project-header i {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .project-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-body p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            background-color: #e1f0fa;
+            color: var(--secondary-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .edu-card {
+            background: var(--card-bg-color);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .edu-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .edu-card h3 {
+            margin: 0.5rem 0;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 4rem 5%;
+        }
+
+        footer h2 {
+            color: white;
+        }
+        
+        footer h2::after {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav ul li {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger.toggle .line:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.toggle .line:nth-child(2) { opacity: 0; }
+            .hamburger.toggle .line:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+            .hero-content h1 { font-size: 2.5rem; }
+            
+            .about-container { grid-template-columns: 1fr; }
+
+            .timeline::after { left: 20px; }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 10px;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd)::after, .timeline-item:nth-child(even)::after {
+                left: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 
+    <!-- Navigation -->
     <header>
+        <div class="logo">
+            <a href="#hero"><i class="fas fa-layer-group"></i> Deeksha Gundu</a>
+        </div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
         <nav>
-            <div class="logo"><a href="#hero">Deeksha Gundu</a></div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -19,169 +701,310 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
         </nav>
     </header>
 
-    <main>
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Hello, I'm Deeksha Gundu</h1>
-                <p class="subtitle">ETL Developer & Data Integration Specialist</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn">View My Work</a>
-                    <a href="Deeksha_Gundu_Resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Hello, I'm Deeksha Gundu</h1>
+            <p class="subtitle">Certified Power Platform Developer (PL-100 | PL-900)</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View My Work</a>
+                <!-- Update the Resume link if needed -->
+                <a href="DeekshaGundu_Resume.docx" class="btn btn-secondary" download><i class="fas fa-download"></i> Download Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="content-section">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about-image">
+                <!-- Ensure profile.jpg is in the same folder -->
+                <img src="profile.jpg" alt="Deeksha Gundu" onerror="this.src='https://ui-avatars.com/api/?name=Deeksha+Gundu&background=3498db&color=fff&size=400'">
+            </div>
+            <div class="about-text">
+                <h3>Professional Summary</h3>
+                <p>
+                    I am a certified Power Platform Developer with over 5 years of experience in designing and deploying scalable low-code business applications. 
+                    My passion lies in transforming manual, time-consuming processes into efficient, automated workflows. 
+                    Moving beyond simple data analysis, I specialize in building robust solutions using Power Apps, automating complex logic with Power Automate, 
+                    and orchestrating enterprise-grade governance via Dataverse and Azure.
+                </p>
+                <ul>
+                    <li><strong>Efficiency Expert:</strong> Proven success in enhancing process efficiency by up to 25% and reducing manual intervention via RPA.</li>
+                    <li><strong>Technical Integrator:</strong> Skilled in bridging the gap between business requirements and technical implementation using Agile/DevOps methodologies.</li>
+                    <li><strong>Solution Architect:</strong> Experienced in collaborating with architects to ensure high-quality outcomes aligned with security and compliance standards.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="content-section">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <i class="fas fa-bolt"></i>
+                <h3>Power Platform</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Power Apps (Canvas & Model)</span>
+                    <span class="skill-tag">Power Automate (Cloud & Desktop)</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">AI Builder</span>
                 </div>
             </div>
-        </section>
-
-        <section id="about" class="content-section">
-            <h2>About Me</h2>
-            <div class="about-container">
-                <div class="about-image">
-                    <img src="profile.jpg" alt="Deeksha Gundu Headshot">
+            <div class="skill-category">
+                <i class="fas fa-database"></i>
+                <h3>Data & Storage</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Dataverse</span>
+                    <span class="skill-tag">SharePoint Online</span>
+                    <span class="skill-tag">SQL Server</span>
                 </div>
-                <div class="about-text">
-                    <h3>Personal Introduction</h3>
-                    <p>
-                        Beyond my technical skills, I'm passionate about transforming raw data into clear, actionable insights that drive business decisions. I enjoy the challenge of untangling complex data puzzles and building efficient, scalable pipelines. I'm always eager to learn new technologies and am currently seeking opportunities where I can contribute to a data-driven culture.
-                    </p>
-                    <h3>Professional Summary</h3>
+            </div>
+            <div class="skill-category">
+                <i class="fas fa-robot"></i>
+                <h3>Automation (RPA)</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Power Automate Desktop</span>
+                    <span class="skill-tag">Automation Anywhere (A360)</span>
+                    <span class="skill-tag">Metabots</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <i class="fab fa-microsoft"></i>
+                <h3>Azure Services</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Azure AD</span>
+                    <span class="skill-tag">Blob Storage</span>
+                    <span class="skill-tag">Key Vaults</span>
+                    <span class="skill-tag">Resource Groups</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <i class="fas fa-rocket"></i>
+                <h3>Deployment</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Solutions Management</span>
+                    <span class="skill-tag">Pipelines</span>
+                    <span class="skill-tag">Environment Variables</span>
+                    <span class="skill-tag">ShareGate Migration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="content-section">
+        <h2>Work Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Consultant</h3>
+                    <p class="timeline-company">Capgemini | Jan 2025 – Present</p>
                     <ul>
-                        <li>4 years of progressive experience in ETL Development, Data Integration, and Business Intelligence.</li>
-                        <li>Skilled in query tuning, indexing strategies, and stored procedure optimization — reducing pipeline runtimes by up to 40%.</li>
-                        <li>Delivered 100+ ETL workflows and reporting solutions enabling teams to improve operational efficiency by 25–50%.</li>
+                        <li>Delivered Dataverse-backed Power Apps aligned with enterprise governance.</li>
+                        <li>Implemented automation workflows reducing manual effort by 30–40%.</li>
+                        <li>Utilized Power Platform Pipelines for automated deployments (Dev, QA, Prod).</li>
                     </ul>
                 </div>
             </div>
-        </section>
-
-
-        <section id="skills" class="content-section">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                 <div class="skill-category">
-                    <h3>ETL & Data Warehousing</h3>
-                    <p>SSIS, Azure Data Factory (ADF), Control-M, Azure Synapse, AWS Glue, CDC, SCD, Data Modeling (Star/Snowflake)</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Databases</h3>
-                    <p>SQL Server, Oracle, PostgreSQL, MySQL, MariaDB, MongoDB, Snowflake</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <p>SQL, T-SQL, PL/SQL, Python, Shell Scripting</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Cloud Platforms</h3>
-                    <p>Microsoft Azure (ADF, Synapse, Data Lake), AWS (S3, Athena, Redshift)</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Reporting/BI Tools</h3>
-                    <p>Power BI, Tableau, SSRS</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Version Control & Tools</h3>
-                    <p>Git, Azure DevOps, SharePoint, ALM, Octopus, Visual Studio, SSMS, Data Grip</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="content-section">
-            <h2>Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Data Analyst</h3>
-                    <p class="timeline-company">Yuvi Systems | July 2024 – Present</p>
-                    <ul>
-                        <li>Designed and implemented enterprise-grade ETL workflows using Azure Data Factory (ADF) to ingest data into Snowflake, reducing manual intervention by 40%.</li>
-                        <li>Optimized SQL stored procedures and redesigned joins, improving execution speed by 30%.</li>
-                        <li>Monitored and supported 40+ Azure ingestion jobs, reducing pipeline failure rates by 25%.</li>
-                    </ul>
-                </div>
-                <div class="timeline-item">
+            <div class="timeline-item">
+                <div class="timeline-content">
                     <h3>App Development Analyst</h3>
-                    <p class="timeline-company">Accenture | Jan 2020 – August 2022</p>
+                    <p class="timeline-company">Accenture | Dec 2023 – Dec 2024</p>
                     <ul>
-                        <li>Built and maintained 50+ monthly ETL jobs using SSIS and Control-M.</li>
-                        <li>Optimized SQL pipelines and stored procedures, improving query execution times by 40%.</li>
-                        <li>Migrated legacy SSRS-based ETL dependencies into modern workflows feeding Power BI/Tableau.</li>
+                        <li>Modernized legacy processes using Power Automate Desktop & Automation Anywhere.</li>
+                        <li>Automated 4 legacy workflows, saving 200+ hours per quarter.</li>
+                        <li>Awarded "Star of the Month" for exceptional project delivery.</li>
                     </ul>
                 </div>
             </div>
-        </section>
-
-        <section id="projects" class="content-section">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/800x600" alt="Project 1 Screenshot">
-                    <h3>Portfolio Tracking Dashboard</h3>
-                    <p>
-                        Designed an interactive dashboard to solve the problem of scattered investment data. The dashboard consolidated market trends and personal performance, leading to more informed financial decision-making.
-                    </p>
-                    <div class="project-tech">
-                        <span>Power BI</span>
-                        <span>DAX</span>
-                        <span>Power Query</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn" target="_blank">Live Demo</a>
-                        <a href="#" class="btn btn-secondary" target="_blank">Source Code</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/800x600" alt="Project 2 Screenshot">
-                    <h3>Cancer Incidence & Mortality Dashboard</h3>
-                    <p>
-                        Developed an interactive dashboard to visualize public health data, highlighting trends and high-risk populations to support better public health decisions and resource allocation.
-                    </p>
-                     <div class="project-tech">
-                        <span>Tableau</span>
-                        <span>Data Modeling</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn" target="_blank">Live Demo</a>
-                        <a href="#" class="btn btn-secondary" target="_blank">Source Code</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="education" class="content-section">
-            <h2>Education & Certifications</h2>
-            <div class="education-grid">
-                <div class="education-item">
-                    <h3>Master of Science in Computer Science</h3>
-                    <p>Texas A&M University, USA | May 2024</p>
-                </div>
-                <div class="certifications-item">
-                    <h3>Certifications</h3>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Systems Engineer</h3>
+                    <p class="timeline-company">TCS | Nov 2020 – Nov 2023</p>
                     <ul>
-                        <li>Microsoft Certified: Azure fundamentals (AZ-900)</li>
-                        <li>Certified in AWS Cloud Practitioner</li>
-                        <li>Meta Certified: JavaScript Developer</li>
+                        <li>Winner of Kaizen Event for automation that improved efficiency by 20%.</li>
+                        <li>Designed Canvas/Model-Driven Apps using SharePoint & SQL Server.</li>
+                        <li>Reduced onboarding time by 34% through structured documentation.</li>
                     </ul>
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Associate Trainee</h3>
+                    <p class="timeline-company">NTT Data | Sep 2019 – Oct 2020</p>
+                    <ul>
+                        <li>Assisted in migrating SharePoint data using ShareGate Tool with zero data loss.</li>
+                        <li>Built simple Canvas Apps and flows for internal processes.</li>
+                        <li>Prepared Technical (TDD) and Solution Design Documents (SDD).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Projects Section (Extracted from Resume Achievements) -->
+    <section id="projects" class="content-section">
+        <h2>Key Projects & Achievements</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Enterprise Governance App</h3>
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="project-body">
+                    <p>Designed a secure Model-Driven App backed by Dataverse. Collaborated with architects to implement complex security roles, AD groups, and permission models, ensuring compliance across the organization.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Model-Driven Apps</span>
+                        <span class="project-tag">Dataverse</span>
+                        <span class="project-tag">Security Roles</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Legacy Process Automation</h3>
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="project-body">
+                    <p>Modernized legacy workflows using RPA tools. Built MetaBots and reusable components that reduced execution time and saved over 200 hours of manual work per quarter.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Power Automate Desktop</span>
+                        <span class="project-tag">Automation Anywhere</span>
+                        <span class="project-tag">RPA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>SharePoint Migration Initiative</h3>
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="project-body">
+                    <p>Led a critical data migration project moving from SharePoint On-Premises to Online using ShareGate. Achieved zero data loss and ensured seamless transition for business users.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">SharePoint</span>
+                        <span class="project-tag">ShareGate</span>
+                        <span class="project-tag">Data Migration</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Operational Efficiency Kaizen</h3>
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="project-body">
+                    <p>Proposed and implemented an automation idea during a Kaizen event. The solution automated recurring manual tasks, reducing human errors and improving overall business efficiency by 20%.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Power Automate Cloud</span>
+                        <span class="project-tag">Process Optimization</span>
+                        <span class="project-tag">Kaizen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="content-section">
+        <h2>Education & Certifications</h2>
+        <div class="education-grid">
+            <div class="edu-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Bachelor of Technology</h3>
+                <p>Vidya Jyothi Institute of Technology, India</p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">May 2019</p>
+            </div>
+            <div class="edu-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Certifications</h3>
+                <ul style="list-style: none; padding: 0; text-align: center;">
+                    <li style="margin-bottom: 0.5rem;">Microsoft Certified: <strong>PL-100</strong> (Power Apps Maker)</li>
+                    <li>Microsoft Certified: <strong>PL-900</strong> (Power Apps Fundamentals)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer id="contact">
         <h2>Get In Touch</h2>
-        <p>Feel free to reach out for collaborations or just a friendly chat.</p>
-        <a href="mailto:Deeksha.Gundu98@gmail.com" class="btn">Deeksha.Gundu98@gmail.com</a>
+        <p>Open to opportunities in Power Platform Development and Automation.</p>
+        
+        <a href="mailto:deeksha.9828@gmail.com" class="contact-btn">
+            <i class="fas fa-envelope"></i> deeksha.9828@gmail.com
+        </a>
+
         <div class="social-links">
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
         </div>
         <p class="copyright">&copy; 2025 by Deeksha Gundu. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Hamburger Menu ---
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('nav ul');
+            const links = document.querySelectorAll('nav ul li a');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('toggle');
+            });
+
+            // Close mobile menu when a link is clicked
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('toggle');
+                    }
+                });
+            });
+
+            // --- Intersection Observer for Fade-in and Active Nav Links ---
+            const sections = document.querySelectorAll('.content-section, #hero');
+            
+            const observerOptions = {
+                root: null,
+                threshold: 0.25, 
+                rootMargin: "-50px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Active Link Logic
+                        const id = entry.target.getAttribute('id');
+                        if(id) {
+                            links.forEach(link => {
+                                link.classList.remove('active');
+                                if(link.getAttribute('href') === `#${id}`) {
+                                    link.classList.add('active');
+                                }
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
